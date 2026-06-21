@@ -17,6 +17,10 @@ interface MapInstance { setView: (...a: unknown[]) => MapInstance; on: (...a: un
 interface MarkerInstance { addTo: (m: MapInstance) => MarkerInstance; setLatLng: (ll: [number,number]) => void; setStyle: (s: object) => void; bindTooltip: (text: string, opts: object) => MarkerInstance; on: (ev: string, fn: () => void) => void; remove: () => void; }
 interface PolylineInstance { addTo: (m: MapInstance) => PolylineInstance; setLatLngs: (lls: [number,number][]) => void; setStyle: (s: object) => void; remove: () => void; }
 
+// Singapore city center
+const SG_LAT = 1.3521;
+const SG_LNG = 103.8198;
+
 export default function MapView({ entities, selected, onSelect }: Props) {
   const divRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapInstance | null>(null);
@@ -27,7 +31,7 @@ export default function MapView({ entities, selected, onSelect }: Props) {
   useEffect(() => {
     if (!divRef.current || initRef.current) return;
     initRef.current = true;
-    const map = L.map(divRef.current, { center: [-6.2088, 106.8456], zoom: 14, zoomControl: true, attributionControl: false } as object);
+    const map = L.map(divRef.current, { center: [SG_LAT, SG_LNG], zoom: 14, zoomControl: true, attributionControl: false } as object);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19 } as object).addTo(map);
     mapRef.current = map;
     return () => { map.remove(); mapRef.current = null; initRef.current = false; };
@@ -81,7 +85,7 @@ export default function MapView({ entities, selected, onSelect }: Props) {
   return (
     <div style={{ width:"100%", height:"100%", position:"relative" }}>
       <div ref={divRef} style={{ width:"100%", height:"100%" }} />
-      <div style={{ ...HUD, top:10, left:10 }}>OPS AREA — GRID 06°S 106°E</div>
+      <div style={{ ...HUD, top:10, left:10 }}>OPS AREA — SINGAPORE 01°N 103°E</div>
       <div style={{ ...HUD, top:10, right:10 }}>ALT: MSL · PROJ: WGS84</div>
       <div style={{ ...HUD, bottom:10, left:10, pointerEvents:"auto", display:"flex", gap:"12px", alignItems:"center" }}>
         {[["#3b82f6","UAV"],["#22c55e","VEH"],["#f59e0b","PRS"],["#ef4444","THREAT"]].map(([c,l]) => (
