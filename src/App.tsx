@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import Simulator from "./pages/Simulator";
+import About from "./pages/About";
+import HowTo from "./pages/HowTo";
+import Legal from "./pages/Legal";
+import Navbar from "./components/Navbar";
+
+export type Page = "simulator" | "about" | "howto" | "legal";
 
 export default function App() {
   const [ready, setReady] = useState(false);
+  const [page, setPage] = useState<Page>("simulator");
 
   useEffect(() => {
     if ((window as unknown as Record<string,unknown>).L) { setReady(true); return; }
@@ -25,5 +32,15 @@ export default function App() {
     </div>
   );
 
-  return <Simulator />;
+  return (
+    <div style={{ height:"100vh", width:"100vw", display:"flex", flexDirection:"column", background:"hsl(220,15%,7%)", overflow:"hidden" }}>
+      <Navbar current={page} onNav={setPage} />
+      <div style={{ flex:1, overflow:"hidden", position:"relative" }}>
+        {page === "simulator" && <Simulator />}
+        {page === "about" && <About onNav={setPage} />}
+        {page === "howto" && <HowTo />}
+        {page === "legal" && <Legal />}
+      </div>
+    </div>
+  );
 }
