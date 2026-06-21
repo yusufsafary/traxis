@@ -25,8 +25,9 @@ export interface FeedEvent {
   entityId?: string;
 }
 
-const CENTER_LAT = -6.2088;
-const CENTER_LNG = 106.8456;
+// Singapore city center
+const CENTER_LAT = 1.3521;
+const CENTER_LNG = 103.8198;
 const SPREAD = 0.045;
 const DEG_PER_METER = 1 / 111320;
 
