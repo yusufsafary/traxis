@@ -8,13 +8,23 @@ import TopBar from "../components/TopBar";
 
 const MAX_FEED = 40;
 
+type MobileTab = "map" | "list" | "feed";
+
 export default function Simulator() {
   const [entities, setEntities] = useState<Entity[]>(() => createInitialEntities());
   const [feed, setFeed] = useState<FeedEvent[]>([]);
   const [selected, setSelected] = useState<Entity | null>(null);
   const [running, setRunning] = useState(true);
   const [elapsed, setElapsed] = useState(0);
+  const [mobileTab, setMobileTab] = useState<MobileTab>("map");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    const fn = () => setIsMobile(window.innerWidth <= 700);
+    window.addEventListener("resize", fn);
+    return () => window.removeEventListener("resize", fn);
+  }, []);
 
   const tick = useCallback(() => {
     setEntities((prev) => {
@@ -41,8 +51,53 @@ export default function Simulator() {
   const threatCount = entities.filter((e) => e.threat || e.status === "THREAT").length;
   const activeCount = entities.filter((e) => e.status !== "LOST").length;
 
+  const BASE: React.CSSProperties = { height:"100%", width:"100%", display:"flex", flexDirection:"column", background:"hsl(220,15%,7%)", overflow:"hidden", fontFamily:"'JetBrains Mono',monospace" };
+  const TAB_BTN = (active: boolean): React.CSSProperties => ({
+    flex: 1, background: active ? "hsl(220,14%,12%)" : "transparent", border: "none", borderTop: active ? "2px solid hsl(0,84%,55%)" : "2px solid transparent",
+    color: active ? "hsl(210,20%,88%)" : "hsl(210,15%,45%)", fontFamily:"'JetBrains Mono',monospace", fontSize:"10px", fontWeight:600,
+    letterSpacing:"0.14em", textTransform:"uppercase", cursor:"pointer", padding:"10px 0", transition:"all 0.15s",
+  });
+
+  if (isMobile) {
+    return (
+      <div style={BASE}>
+        <TopBar running={running} onToggle={() => setRunning(r => !r)} elapsed={elapsed} entityCount={entities.length} activeCount={activeCount} threatCount={threatCount} compact />
+        {/* Mobile tabs */}
+        <div style={{ display:"flex", borderBottom:"1px solid hsl(220,12%,16%)", flexShrink:0 }}>
+          <button style={TAB_BTN(mobileTab === "map")} onClick={() => setMobileTab("map")}>MAP</button>
+          <button style={TAB_BTN(mobileTab === "list")} onClick={() => setMobileTab("list")}>UNITS</button>
+          <button style={TAB_BTN(mobileTab === "feed")} onClick={() => setMobileTab("feed")}>FEED</button>
+        </div>
+        <div style={{ flex:1, overflow:"hidden", position:"relative" }}>
+          {mobileTab === "map" && (
+            <div style={{ height:"100%", display:"flex", flexDirection:"column" }}>
+              <div style={{ flex:1, position:"relative" }}>
+                <MapView entities={entities} selected={selected} onSelect={(e) => { setSelected(e); }} />
+              </div>
+              {selected && (
+                <div style={{ maxHeight:"200px", overflowY:"auto", borderTop:"1px solid hsl(220,12%,16%)" }}>
+                  <EntityDetail entity={selected} />
+                </div>
+              )}
+            </div>
+          )}
+          {mobileTab === "list" && (
+            <div style={{ height:"100%", overflowY:"auto" }}>
+              <EntityList entities={entities} selected={selected} onSelect={(e) => { setSelected(e); setMobileTab("map"); }} />
+            </div>
+          )}
+          {mobileTab === "feed" && (
+            <div style={{ height:"100%", overflowY:"auto" }}>
+              <SystemFeed feed={feed} entities={entities} onSelect={(e) => { setSelected(e); setMobileTab("map"); }} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ height:"100vh", width:"100vw", display:"flex", flexDirection:"column", background:"hsl(220,15%,7%)", overflow:"hidden", fontFamily:"'JetBrains Mono',monospace" }}>
+    <div style={BASE}>
       <TopBar running={running} onToggle={() => setRunning(r => !r)} elapsed={elapsed} entityCount={entities.length} activeCount={activeCount} threatCount={threatCount} />
       <div style={{ display:"flex", flex:1, overflow:"hidden" }}>
         <div style={{ width:"224px", display:"flex", flexDirection:"column", borderRight:"1px solid hsl(220,12%,16%)", background:"hsl(220,16%,8%)", overflow:"hidden", flexShrink:0 }}>
