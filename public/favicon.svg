@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#0c0f14"/>
+  <circle cx="32" cy="32" r="24" stroke="#ef4444" stroke-width="1" fill="none" opacity="0.12"/>
+  <path d="M28.179740091327535,53.66577056626858 A22,22 0 0 1 10.334229433731423,35.82025990867247" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-linecap="square"/><path d="M10.334229433731423,28.17974009132753 A22,22 0 0 1 28.17974009132753,10.334229433731423" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-linecap="square"/><path d="M35.82025990867246,10.334229433731423 A22,22 0 0 1 53.66577056626858,28.179740091327513" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-linecap="square"/><path d="M53.66577056626858,35.82025990867247 A22,22 0 0 1 35.82025990867247,53.66577056626858" stroke="#ef4444" stroke-width="2.5" fill="none" stroke-linecap="square"/>
+  <path d="M27.865439662745015,46.41892543907478 A15,15 0 0 1 17.58107456092522,36.134560337254996" stroke="#ef4444" stroke-width="1.4" fill="none" stroke-linecap="square" opacity="0.55"/><path d="M17.581074560925217,27.865439662745015 A15,15 0 0 1 27.86543966274502,17.581074560925217" stroke="#ef4444" stroke-width="1.4" fill="none" stroke-linecap="square" opacity="0.55"/><path d="M36.13456033725499,17.581074560925217 A15,15 0 0 1 46.41892543907478,27.865439662745004" stroke="#ef4444" stroke-width="1.4" fill="none" stroke-linecap="square" opacity="0.55"/><path d="M46.41892543907478,36.13456033725499 A15,15 0 0 1 36.13456033725499,46.41892543907478" stroke="#ef4444" stroke-width="1.4" fill="none" stroke-linecap="square" opacity="0.55"/>
+  <path d="M47.55634918610404,47.55634918610404 L50.38477631085024,50.384776310850235" stroke="#ef4444" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M16.443650813895957,47.55634918610404 L13.615223689149765,50.38477631085024" stroke="#ef4444" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M16.44365081389595,16.443650813895957 L13.615223689149762,13.615223689149765" stroke="#ef4444" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M47.55634918610404,16.44365081389595 L50.38477631085023,13.615223689149762" stroke="#ef4444" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <line x1="3" y1="32" x2="24" y2="32" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="40" y1="32" x2="61" y2="32" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="32" y1="3" x2="32" y2="24" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="32" y1="40" x2="32" y2="61" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="6" stroke="#ef4444" stroke-width="1.8" fill="none"/>
+  <circle cx="32" cy="32" r="2.2" fill="#ef4444"/>
+</svg>
