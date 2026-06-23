@@ -16,7 +16,7 @@ const C = {
 };
 
 const FEATURES = [
-  { icon: "◉", label: "Real-Time Tracking", desc: "13+ entities updated every 2 seconds — UAVs, vehicles, personnel — all rendered live on an interactive map." },
+  { icon: "◉", label: "Real-Time Tracking", desc: "13+ entities updated every 2 seconds, including UAVs, vehicles, and personnel, all rendered live on an interactive map." },
   { icon: "⚠", label: "Threat Detection", desc: "Dynamic threat flagging based on behavioral patterns. Alerts surface instantly in the system event feed." },
   { icon: "▸", label: "Trail Visualization", desc: "Each entity renders a 22-point movement trail on the map, showing full trajectory history at a glance." },
   { icon: "≡", label: "System Feed", desc: "Live operational intelligence stream: bearing reports, speed anomalies, status changes, and hostile activity." },
@@ -72,7 +72,7 @@ export default function Home({ onNav }: Props) {
           </h1>
 
           <p style={{ color:C.muted, fontSize:"clamp(13px,2vw,15px)", lineHeight:1.7, maxWidth:"480px", margin:"0 auto 32px", fontFamily:C.inter, padding:"0 4px" }}>
-            A browser-native operational awareness dashboard — live entity tracking, threat detection, and C2-style HUD, built entirely client-side with React and Leaflet.
+            A browser-native operational awareness dashboard with live entity tracking, threat detection, and a C2-style HUD. Built entirely client-side with React and Leaflet.
           </p>
 
           {/* CTA Buttons */}
@@ -226,7 +226,7 @@ export default function Home({ onNav }: Props) {
             <div style={{ display:"flex", justifyContent:"center", marginBottom:"16px" }}>
               <TraxisLogo size={36} showText={false} animate color="hsl(0,84%,45%)" />
             </div>
-            <div style={{ color:C.muted, fontFamily:C.font, fontSize:"9px", letterSpacing:"0.4em", textTransform:"uppercase", marginBottom:"12px" }}>OPS AREA — SINGAPORE 01°N 103°E</div>
+            <div style={{ color:C.muted, fontFamily:C.font, fontSize:"9px", letterSpacing:"0.4em", textTransform:"uppercase", marginBottom:"12px" }}>OPS AREA, SINGAPORE 01°N 103°E</div>
             <div style={{ color:C.text, fontFamily:C.font, fontSize:"clamp(14px,3vw,22px)", fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:"8px" }}>Live Tracking Active</div>
             <div style={{ color:C.muted, fontSize:"13px", marginBottom:"24px" }}>13 entities currently being simulated across Singapore's urban grid</div>
             <button onClick={() => onNav("simulator")}

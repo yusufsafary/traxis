@@ -85,7 +85,7 @@ export default function MapView({ entities, selected, onSelect }: Props) {
   return (
     <div style={{ width:"100%", height:"100%", position:"relative" }}>
       <div ref={divRef} style={{ width:"100%", height:"100%" }} />
-      <div style={{ ...HUD, top:10, left:10 }}>OPS AREA — SINGAPORE 01°N 103°E</div>
+      <div style={{ ...HUD, top:10, left:10 }}>OPS AREA, SINGAPORE 01°N 103°E</div>
       <div style={{ ...HUD, top:10, right:10 }}>ALT: MSL · PROJ: WGS84</div>
       <div style={{ ...HUD, bottom:10, left:10, pointerEvents:"auto", display:"flex", gap:"12px", alignItems:"center" }}>
         {[["#3b82f6","UAV"],["#22c55e","VEH"],["#f59e0b","PRS"],["#ef4444","THREAT"]].map(([c,l]) => (

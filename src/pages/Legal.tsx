@@ -1,6 +1,15 @@
 import { useState } from "react";
 
-const C = { bg:"hsl(220,15%,7%)", card:"hsl(220,16%,10%)", border:"hsl(220,12%,16%)", red:"hsl(0,84%,55%)", muted:"hsl(210,15%,45%)", text:"hsl(210,20%,86%)", font:"'JetBrains Mono',monospace", inter:"'Inter',sans-serif" };
+const C = {
+  bg: "#ffffff",
+  card: "hsl(220,14%,97%)",
+  border: "hsl(220,12%,88%)",
+  red: "hsl(0,84%,45%)",
+  muted: "hsl(220,10%,52%)",
+  text: "hsl(220,15%,14%)",
+  font: "'JetBrains Mono',monospace",
+  inter: "'Inter',sans-serif",
+};
 
 type Tab = "privacy" | "terms" | "cookies";
 const TABS: { id: Tab; label: string }[] = [
@@ -20,20 +29,20 @@ const P = ({ children }: { children: React.ReactNode }) => (
 const UPDATED = "21 June 2026";
 
 const Privacy = () => <>
-  <P>This Privacy Policy describes how Traxis (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;the Service&rdquo;), accessible at <strong style={{color:C.text}}>straxis.xyz</strong>, handles information when you use our website.</P>
+  <P>This Privacy Policy describes how Traxis, accessible at <strong style={{color:C.text}}>straxis.xyz</strong>, handles information when you use our website.</P>
   <H2>Information We Collect</H2>
   <P>Traxis is a <strong style={{color:C.text}}>static, client-side simulator</strong>. We do not collect, store, or process any personal data. No accounts, registration, or login are required. No form submissions are accepted. No user-generated data is transmitted to any server.</P>
-  <H2>Local Storage &amp; Cookies</H2>
+  <H2>Local Storage and Cookies</H2>
   <P>Traxis does not use cookies, local storage, session storage, or any other persistent browser storage mechanism. All simulation state is held in memory and is lost when the tab is closed or refreshed.</P>
   <H2>Third-Party Services</H2>
-  <P>The simulator loads map tiles from <strong style={{color:C.text}}>OpenStreetMap</strong> (openstreetmap.org) via their tile servers. When map tiles are fetched, your IP address may be visible to OpenStreetMap's servers as part of standard HTTP requests. Please review OpenStreetMap's privacy policy at openstreetmap.org/copyright.</P>
-  <P>Fonts are loaded from <strong style={{color:C.text}}>Google Fonts</strong> (fonts.googleapis.com). Google may collect connection data. Please review Google's privacy policy for details.</P>
+  <P>The simulator loads map tiles from <strong style={{color:C.text}}>OpenStreetMap</strong> via their tile servers. When map tiles are fetched, your IP address may be visible to OpenStreetMap's servers as part of standard HTTP requests. Please review OpenStreetMap's privacy policy at openstreetmap.org/copyright.</P>
+  <P>Fonts are loaded from <strong style={{color:C.text}}>Google Fonts</strong>. Google may collect connection data. Please review Google's privacy policy for details.</P>
   <H2>Analytics</H2>
   <P>We do not use any analytics platform, tracking pixel, or telemetry service. No data about your usage, device, or browsing behavior is collected.</P>
   <H2>Children's Privacy</H2>
   <P>Traxis does not knowingly collect information from children under 13. If you believe a child has provided personal information, please contact us immediately.</P>
   <H2>Changes</H2>
-  <P>We may update this policy at any time. Material changes will be reflected in the &ldquo;Last updated&rdquo; date above. Continued use of the site after changes constitutes acceptance.</P>
+  <P>We may update this policy at any time. Material changes will be reflected in the last updated date above. Continued use of the site after changes constitutes acceptance.</P>
   <H2>Contact</H2>
   <P>For privacy-related questions, please open an issue on our <strong style={{color:C.text}}>GitHub repository</strong> at github.com/yusufsafary/traxis.</P>
 </>;
@@ -43,13 +52,13 @@ const Terms = () => <>
   <H2>Nature of the Service</H2>
   <P>Traxis is a <strong style={{color:C.text}}>demonstration simulator only</strong>. All entities, positions, events, and intelligence data displayed are entirely fictional and procedurally generated. The Service does not interface with any real tracking system, live sensor network, operational database, military system, or law enforcement platform of any kind.</P>
   <H2>Permitted Use</H2>
-  <P>You may use Traxis for lawful, non-commercial, and educational purposes — including personal learning, portfolio demonstration, and academic reference. You may share or link to the site freely.</P>
+  <P>You may use Traxis for lawful, non-commercial, and educational purposes, including personal learning, portfolio demonstration, and academic reference. You may share or link to the site freely.</P>
   <H2>Prohibited Use</H2>
-  <P>You may not: (a) represent Traxis as a real surveillance or tracking system to any third party; (b) use the simulated output as evidence, intelligence, or decision support in any real operational context; (c) attempt to reverse-engineer, scrape, or automate the Service; (d) use the Service in any way that violates applicable law.</P>
+  <P>You may not represent Traxis as a real surveillance or tracking system to any third party, use simulated output as evidence or decision support in any real operational context, attempt to reverse-engineer or scrape the Service, or use the Service in any way that violates applicable law.</P>
   <H2>Intellectual Property</H2>
-  <P>The source code for Traxis is open source and available at github.com/yusufsafary/traxis under its stated license. Map tile data is © OpenStreetMap contributors, licensed under the Open Database Licence (ODbL). Font assets are provided by Google Fonts under their respective licenses.</P>
+  <P>The source code for Traxis is open source and available at github.com/yusufsafary/traxis under its stated license. Map tile data is copyright OpenStreetMap contributors, licensed under the Open Database Licence. Font assets are provided by Google Fonts under their respective licenses.</P>
   <H2>Disclaimer of Warranties</H2>
-  <P>The Service is provided &ldquo;as is&rdquo; without warranty of any kind, express or implied. We do not warrant that the Service will be uninterrupted, error-free, or that any simulated data represents any real-world condition.</P>
+  <P>The Service is provided as-is without warranty of any kind, express or implied. We do not warrant that the Service will be uninterrupted, error-free, or that any simulated data represents any real-world condition.</P>
   <H2>Limitation of Liability</H2>
   <P>To the maximum extent permitted by law, Traxis and its authors shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of or inability to use the Service.</P>
   <H2>Governing Law</H2>
@@ -65,7 +74,10 @@ const Cookies = () => <>
   <H2>Third-Party Cookies</H2>
   <P>While we do not set cookies ourselves, third-party services loaded by the page may set their own:</P>
   <div style={{ padding:"16px", background:C.card, border:`1px solid ${C.border}`, marginBottom:"14px" }}>
-    {[["OpenStreetMap tile servers","May log IP addresses as part of HTTP tile requests. No cookies are set by tile servers under normal operation."],["Google Fonts","Fonts loaded from fonts.googleapis.com may result in Google setting cookies or recording connection data in accordance with Google's policies."],].map(([t, d]) => (
+    {[
+      ["OpenStreetMap tile servers", "May log IP addresses as part of HTTP tile requests. No cookies are typically set by tile servers under normal operation."],
+      ["Google Fonts", "Fonts loaded from fonts.googleapis.com may result in Google recording connection data in accordance with Google's policies."],
+    ].map(([t, d]) => (
       <div key={t} style={{ marginBottom:"12px", paddingBottom:"12px", borderBottom:`1px solid ${C.border}` }}>
         <div style={{ color:C.text, fontFamily:C.font, fontSize:"10px", fontWeight:600, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:"4px" }}>{t}</div>
         <div style={{ color:C.muted, fontFamily:C.inter, fontSize:"13px", lineHeight:"1.6" }}>{d}</div>
@@ -83,12 +95,12 @@ export default function Legal() {
   const [tab, setTab] = useState<Tab>("privacy");
 
   return (
-    <div style={{ height:"100%", overflowY:"auto", background:C.bg }}>
-      <div style={{ maxWidth:"760px", margin:"0 auto", padding:"48px 24px 80px" }}>
+    <div style={{ height:"100%", overflowY:"auto", overflowX:"hidden", background:C.bg }}>
+      <div style={{ maxWidth:"760px", margin:"0 auto", padding:"48px 16px 80px" }}>
 
         <div style={{ marginBottom:"32px" }}>
           <div style={{ color:C.red, fontFamily:C.font, fontSize:"10px", letterSpacing:"0.35em", textTransform:"uppercase", marginBottom:"8px" }}>Legal</div>
-          <h1 style={{ color:C.text, fontFamily:C.font, fontSize:"22px", fontWeight:700, letterSpacing:"0.1em", margin:"0 0 8px" }}>LEGAL INFORMATION</h1>
+          <h1 style={{ color:C.text, fontFamily:C.font, fontSize:"clamp(16px,4vw,22px)", fontWeight:700, letterSpacing:"0.1em", margin:"0 0 8px" }}>LEGAL INFORMATION</h1>
           <div style={{ color:C.muted, fontFamily:C.inter, fontSize:"12px" }}>Last updated: {UPDATED}</div>
         </div>
 
@@ -101,7 +113,7 @@ export default function Legal() {
               style={{
                 background:"transparent", border:"none", cursor:"pointer",
                 fontFamily:C.font, fontSize:"10px", fontWeight:600, letterSpacing:"0.14em", textTransform:"uppercase",
-                padding:"10px 20px", whiteSpace:"nowrap",
+                padding:"10px 16px", whiteSpace:"nowrap",
                 color: tab === t.id ? C.text : C.muted,
                 borderBottom: tab === t.id ? `2px solid ${C.red}` : "2px solid transparent",
                 marginBottom:"-1px", transition:"color 0.15s",

@@ -111,9 +111,9 @@ export function stepEntities(entities: Entity[]): Entity[] {
 }
 
 const FEED_MSGS: Record<EntityType, string[]> = {
-  drone: ["entered restricted airspace","signal acquired — bearing {hdg}°","altitude change detected","thermal signature confirmed","transponder offline","waypoint updated","new contact established"],
+  drone: ["entered restricted airspace","signal acquired, bearing {hdg}°","altitude change detected","thermal signature confirmed","transponder offline","waypoint updated","new contact established"],
   vehicle: ["speed {spd} km/h","stopped at grid {grid}","route deviation detected","new contact identified","lost contact","convoy formation observed","license plate unreadable"],
-  personnel: ["movement detected","armed status confirmed","group of {n} identified","lost contact","new contact — bearing {hdg}°","activity spike","perimeter breach"],
+  personnel: ["movement detected","armed status confirmed","group of {n} identified","lost contact","new contact, bearing {hdg}°","activity spike","perimeter breach"],
 };
 
 export function generateFeedEvent(entities: Entity[]): FeedEvent | null {
@@ -134,7 +134,7 @@ export function generateFeedEvent(entities: Entity[]): FeedEvent | null {
   return {
     id: `evt-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
     timestamp: ts(),
-    message: `${e.label} — ${msg}`,
+    message: `${e.label}: ${msg}`,
     level,
     entityId: e.id,
   };
