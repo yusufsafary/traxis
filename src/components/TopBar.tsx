@@ -14,30 +14,28 @@ function fmt(s: number) {
 }
 
 const S: Record<string, React.CSSProperties> = {
-  bar: { display:"flex", alignItems:"center", justifyContent:"space-between", padding:"0 14px", height:"40px", background:"hsl(220,16%,8%)", borderBottom:"1px solid hsl(220,12%,16%)", flexShrink:0, userSelect:"none", fontFamily:"'JetBrains Mono',monospace" },
-  statLabel: { color:"hsl(210,15%,45%)", fontSize:"10px", letterSpacing:"0.1em", textTransform:"uppercase" },
-  statVal: { color:"hsl(210,20%,92%)", fontWeight:600 },
-  threat: { color:"hsl(0,84%,55%)", fontWeight:700, fontSize:"11px" },
+  bar: { display:"flex", alignItems:"center", justifyContent:"space-between", padding:"0 14px", height:"40px", background:"hsl(220,16%,97%)", borderBottom:"1px solid hsl(220,12%,88%)", flexShrink:0, userSelect:"none", fontFamily:"'JetBrains Mono',monospace" },
+  statLabel: { color:"hsl(220,10%,55%)", fontSize:"10px", letterSpacing:"0.1em", textTransform:"uppercase" },
+  statVal: { color:"hsl(220,15%,14%)", fontWeight:600 },
+  threat: { color:"hsl(0,84%,45%)", fontWeight:700, fontSize:"11px" },
   btn: { display:"flex", alignItems:"center", gap:"6px", padding:"0 11px", height:"24px", fontSize:"10px", fontWeight:600, letterSpacing:"0.12em", textTransform:"uppercase", border:"1px solid", cursor:"pointer", fontFamily:"'JetBrains Mono',monospace", background:"transparent", transition:"all 0.15s" },
 };
 
 export default function TopBar({ running, onToggle, elapsed, entityCount, activeCount, threatCount, compact }: Props) {
   return (
     <div style={S.bar}>
-      {/* Logo mark only (no text in TopBar — Navbar has the full logo) */}
       <div style={{ display:"flex", alignItems:"center", gap:"10px" }}>
         <TraxisLogo size={22} showText={false} animate={running} />
         {!compact && (
-          <span style={{ color:"hsl(210,15%,40%)", fontSize:"10px", letterSpacing:"0.18em", textTransform:"uppercase", borderLeft:"1px solid hsl(220,12%,16%)", paddingLeft:"10px" }}>
+          <span style={{ color:"hsl(220,10%,62%)", fontSize:"10px", letterSpacing:"0.18em", textTransform:"uppercase", borderLeft:"1px solid hsl(220,12%,88%)", paddingLeft:"10px" }}>
             Operation Blackedge
           </span>
         )}
       </div>
 
-      {/* Stats */}
       <div style={{ display:"flex", alignItems:"center", gap: compact ? "12px" : "20px", fontSize:"11px" }}>
         <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
-          <span style={{ width:"7px", height:"7px", borderRadius:"50%", display:"inline-block", background: running ? "#4ade80" : "hsl(210,15%,40%)", animation: running ? "pulse-dot 2s ease-in-out infinite" : "none" }} />
+          <span style={{ width:"7px", height:"7px", borderRadius:"50%", display:"inline-block", background: running ? "#16a34a" : "hsl(220,10%,68%)", animation: running ? "pulse-dot 2s ease-in-out infinite" : "none" }} />
           <span style={S.statLabel}>{running ? "LIVE" : "PAUSED"}</span>
         </div>
         {!compact && (
@@ -53,7 +51,7 @@ export default function TopBar({ running, onToggle, elapsed, entityCount, active
       </div>
 
       <button onClick={onToggle}
-        style={{ ...S.btn, borderColor: running ? "hsl(220,12%,22%)" : "hsl(0,84%,55%)", color: running ? "hsl(210,15%,52%)" : "hsl(0,84%,55%)" }}>
+        style={{ ...S.btn, borderColor: running ? "hsl(220,12%,82%)" : "hsl(0,84%,45%)", color: running ? "hsl(220,10%,52%)" : "hsl(0,84%,45%)" }}>
         {running ? "⏸ Pause" : "▶ Resume"}
       </button>
     </div>

@@ -8,17 +8,16 @@ interface Props {
 
 export default function TraxisLogo({
   size = 28,
-  color = "hsl(0,84%,55%)",
+  color = "hsl(0,84%,45%)",
   showText = true,
   textSize = 13,
   animate = false,
 }: Props) {
-  const r1 = 10;   // outer ring radius
-  const r2 = 6.5;  // inner ring radius
-  const r3 = 2.8;  // center ring
-  const gap = 18;  // gap angle in degrees at each quadrant
+  const r1 = 10;
+  const r2 = 6.5;
+  const r3 = 2.8;
+  const gap = 18;
 
-  // Arc helper: draw arc from startAngle to endAngle on radius r (SVG coords, center at 0,0)
   function arc(radius: number, startDeg: number, endDeg: number) {
     const s = (startDeg * Math.PI) / 180;
     const e = (endDeg * Math.PI) / 180;
@@ -31,15 +30,13 @@ export default function TraxisLogo({
   }
 
   const half = gap / 2;
-  // 4 arcs for outer ring, gaps at top/right/bottom/left
   const outerArcs = [
-    arc(r1, 90 + half, 180 - half),  // bottom-left
-    arc(r1, 180 + half, 270 - half), // top-left
-    arc(r1, 270 + half, 360 - half), // top-right
-    arc(r1, 0 + half, 90 - half),    // bottom-right
+    arc(r1, 90 + half, 180 - half),
+    arc(r1, 180 + half, 270 - half),
+    arc(r1, 270 + half, 360 - half),
+    arc(r1, 0 + half, 90 - half),
   ];
 
-  // Inner dashes
   const innerArcs = [
     arc(r2, 90 + half * 1.5, 180 - half * 1.5),
     arc(r2, 180 + half * 1.5, 270 - half * 1.5),
@@ -47,11 +44,9 @@ export default function TraxisLogo({
     arc(r2, 0 + half * 1.5, 90 - half * 1.5),
   ];
 
-  // Crosshair lines - slightly beyond outer ring, gap near center
   const ch = r1 + 3.5;
-  const cg = r3 + 1.2; // gap near center
+  const cg = r3 + 1.2;
 
-  // 45° tick marks
   const tickOuter = r1 + 1.8;
   const tickInner = r1 + 0.2;
   const ticks45 = [45, 135, 225, 315].map(deg => {
@@ -64,7 +59,6 @@ export default function TraxisLogo({
     };
   });
 
-  // Small corner markers at 45° on outer ring
   const cornerSize = 1.6;
   const corners = [45, 135, 225, 315].map(deg => {
     const rad = (deg * Math.PI) / 180;
@@ -86,41 +80,31 @@ export default function TraxisLogo({
         fill="none"
         style={{ flexShrink: 0, overflow: "visible" }}
       >
-        {/* Outer glow */}
-        <circle cx="0" cy="0" r={r1 + 1} stroke={color} strokeWidth="0.4" opacity="0.12" />
+        <circle cx="0" cy="0" r={r1 + 1} stroke={color} strokeWidth="0.4" opacity="0.15" />
 
-        {/* Outer ring arcs */}
         {outerArcs.map((d, i) => (
           <path key={`o${i}`} d={d} stroke={color} strokeWidth="1.1" strokeLinecap="square" />
         ))}
 
-        {/* Inner ring arcs */}
         {innerArcs.map((d, i) => (
           <path key={`i${i}`} d={d} stroke={color} strokeWidth="0.65" strokeLinecap="square" opacity="0.6" />
         ))}
 
-        {/* 45° tick marks */}
         {ticks45.map((t, i) => (
           <line key={`t${i}`} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke={color} strokeWidth="0.8" opacity="0.55" />
         ))}
 
-        {/* Crosshairs */}
-        {/* Horizontal */}
         <line x1={-ch} y1="0" x2={-cg} y2="0" stroke={color} strokeWidth="0.7" />
         <line x1={cg} y1="0" x2={ch} y2="0" stroke={color} strokeWidth="0.7" />
-        {/* Vertical */}
         <line x1="0" y1={-ch} x2="0" y2={-cg} stroke={color} strokeWidth="0.7" />
         <line x1="0" y1={cg} x2="0" y2={ch} stroke={color} strokeWidth="0.7" />
 
-        {/* Center ring */}
         <circle cx="0" cy="0" r={r3} stroke={color} strokeWidth="0.8" />
 
-        {/* Center dot */}
         <circle cx="0" cy="0" r="1.1" fill={color}
           style={animate ? { animation: "traxis-pulse 2.2s ease-in-out infinite" } : {}}
         />
 
-        {/* Corner bracket markers */}
         {corners.map((c, i) => (
           <rect key={`c${i}`}
             x={c.cx - cornerSize / 2}
@@ -132,7 +116,6 @@ export default function TraxisLogo({
           />
         ))}
 
-        {/* Scan line (animated) */}
         {animate && (
           <line x1="0" y1="0" x2={r1} y2="0" stroke={color} strokeWidth="0.6" opacity="0.5"
             style={{ transformOrigin: "0 0", animation: "traxis-scan 3s linear infinite" }}

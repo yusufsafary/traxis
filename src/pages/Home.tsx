@@ -4,13 +4,13 @@ import TraxisLogo from "../components/TraxisLogo";
 interface Props { onNav: (p: Page) => void; }
 
 const C = {
-  bg: "hsl(220,15%,7%)",
-  card: "hsl(220,16%,10%)",
-  border: "hsl(220,12%,16%)",
-  red: "hsl(0,84%,55%)",
-  muted: "hsl(210,15%,45%)",
-  mutedHi: "hsl(210,15%,58%)",
-  text: "hsl(210,20%,88%)",
+  bg: "#ffffff",
+  card: "hsl(220,14%,97%)",
+  border: "hsl(220,12%,88%)",
+  red: "hsl(0,84%,45%)",
+  muted: "hsl(220,10%,52%)",
+  mutedHi: "hsl(220,10%,38%)",
+  text: "hsl(220,15%,14%)",
   font: "'JetBrains Mono',monospace",
   inter: "'Inter',sans-serif",
 };
@@ -33,9 +33,9 @@ const STATS = [
 
 function LiveDot() {
   return (
-    <span style={{ display:"inline-flex", alignItems:"center", gap:"6px", padding:"4px 10px", background:"hsla(134,60%,42%,0.1)", border:"1px solid hsla(134,60%,42%,0.25)" }}>
-      <span style={{ width:"6px", height:"6px", borderRadius:"50%", background:"#4ade80", display:"inline-block", animation:"pulse-dot 2s ease-in-out infinite" }} />
-      <span style={{ fontFamily:C.font, fontSize:"9px", fontWeight:600, letterSpacing:"0.2em", color:"#4ade80", textTransform:"uppercase" }}>Live</span>
+    <span style={{ display:"inline-flex", alignItems:"center", gap:"6px", padding:"4px 10px", background:"hsla(142,60%,42%,0.08)", border:"1px solid hsla(142,60%,42%,0.2)" }}>
+      <span style={{ width:"6px", height:"6px", borderRadius:"50%", background:"#16a34a", display:"inline-block", animation:"pulse-dot 2s ease-in-out infinite" }} />
+      <span style={{ fontFamily:C.font, fontSize:"9px", fontWeight:600, letterSpacing:"0.2em", color:"#16a34a", textTransform:"uppercase" }}>Live</span>
     </span>
   );
 }
@@ -48,9 +48,9 @@ export default function Home({ onNav }: Props) {
       <div style={{ minHeight:"90vh", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"80px 24px 60px", textAlign:"center", position:"relative", overflow:"hidden" }}>
 
         {/* Grid bg */}
-        <div style={{ position:"absolute", inset:0, backgroundImage:`linear-gradient(${C.border} 1px, transparent 1px),linear-gradient(90deg,${C.border} 1px,transparent 1px)`, backgroundSize:"48px 48px", opacity:0.35, pointerEvents:"none" }} />
+        <div style={{ position:"absolute", inset:0, backgroundImage:`linear-gradient(${C.border} 1px, transparent 1px),linear-gradient(90deg,${C.border} 1px,transparent 1px)`, backgroundSize:"48px 48px", opacity:0.5, pointerEvents:"none" }} />
         {/* Glow */}
-        <div style={{ position:"absolute", top:"35%", left:"50%", transform:"translate(-50%,-50%)", width:"700px", height:"500px", background:"radial-gradient(ellipse, hsla(0,84%,55%,0.07) 0%, transparent 68%)", pointerEvents:"none" }} />
+        <div style={{ position:"absolute", top:"35%", left:"50%", transform:"translate(-50%,-50%)", width:"700px", height:"500px", background:"radial-gradient(ellipse, hsla(0,84%,45%,0.04) 0%, transparent 68%)", pointerEvents:"none" }} />
 
         <div style={{ position:"relative", zIndex:1, maxWidth:"680px" }}>
           <div style={{ marginBottom:"24px" }}>
@@ -59,7 +59,7 @@ export default function Home({ onNav }: Props) {
 
           {/* Big Logo */}
           <div style={{ display:"flex", justifyContent:"center", marginBottom:"28px" }}>
-            <TraxisLogo size={72} textSize={38} animate color="hsl(0,84%,55%)" />
+            <TraxisLogo size={72} textSize={38} animate color="hsl(0,84%,45%)" />
           </div>
 
           <p style={{ color:C.muted, fontFamily:C.font, fontSize:"clamp(9px,1.8vw,11px)", letterSpacing:"0.35em", textTransform:"uppercase", marginBottom:"12px" }}>
@@ -137,7 +137,7 @@ export default function Home({ onNav }: Props) {
               ["03","Monitor the Feed","Watch the live system feed for threat alerts, bearing updates, and status events."],
             ].map(([n,t,d]) => (
               <div key={n} style={{ padding:"24px", background:C.bg, border:`1px solid ${C.border}` }}>
-                <div style={{ color:C.red, fontFamily:C.font, fontSize:"28px", fontWeight:700, letterSpacing:"0.1em", marginBottom:"12px", opacity:0.6 }}>{n}</div>
+                <div style={{ color:C.red, fontFamily:C.font, fontSize:"28px", fontWeight:700, letterSpacing:"0.1em", marginBottom:"12px", opacity:0.5 }}>{n}</div>
                 <div style={{ color:C.text, fontFamily:C.font, fontSize:"11px", fontWeight:600, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:"8px" }}>{t}</div>
                 <div style={{ color:C.muted, fontSize:"13px", lineHeight:1.6 }}>{d}</div>
               </div>
@@ -157,10 +157,10 @@ export default function Home({ onNav }: Props) {
       {/* ── CTA BANNER ── */}
       <div style={{ maxWidth:"960px", margin:"0 auto", padding:"80px 24px" }}>
         <div style={{ position:"relative", border:`1px solid ${C.border}`, overflow:"hidden", background:C.card, display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", gap:"20px", padding:"56px 24px", textAlign:"center" }}>
-          <div style={{ position:"absolute", inset:0, backgroundImage:`linear-gradient(${C.border} 1px,transparent 1px),linear-gradient(90deg,${C.border} 1px,transparent 1px)`, backgroundSize:"32px 32px", opacity:0.22 }} />
+          <div style={{ position:"absolute", inset:0, backgroundImage:`linear-gradient(${C.border} 1px,transparent 1px),linear-gradient(90deg,${C.border} 1px,transparent 1px)`, backgroundSize:"32px 32px", opacity:0.4 }} />
           <div style={{ position:"relative", zIndex:1 }}>
             <div style={{ display:"flex", justifyContent:"center", marginBottom:"20px" }}>
-              <TraxisLogo size={40} showText={false} animate color="hsl(0,84%,55%)" />
+              <TraxisLogo size={40} showText={false} animate color="hsl(0,84%,45%)" />
             </div>
             <div style={{ color:C.muted, fontFamily:C.font, fontSize:"9px", letterSpacing:"0.4em", textTransform:"uppercase", marginBottom:"14px" }}>OPS AREA — SINGAPORE 01°N 103°E</div>
             <div style={{ color:C.text, fontFamily:C.font, fontSize:"clamp(16px,3vw,22px)", fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:"8px" }}>Live Tracking Active</div>
@@ -178,7 +178,7 @@ export default function Home({ onNav }: Props) {
       {/* ── FOOTER ── */}
       <div style={{ borderTop:`1px solid ${C.border}`, background:C.card }}>
         <div style={{ maxWidth:"960px", margin:"0 auto", padding:"24px", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"12px" }}>
-          <TraxisLogo size={18} textSize={10} color="hsl(0,84%,55%)" />
+          <TraxisLogo size={18} textSize={10} color="hsl(0,84%,45%)" />
           <div style={{ display:"flex", gap:"20px" }}>
             {(["about","howto","legal"] as Page[]).map((p) => (
               <button key={p} onClick={() => onNav(p)}
